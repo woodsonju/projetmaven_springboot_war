@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Calculatrice</title>
+</head>
+<body>
+	<h1>Calculatrice</h1>
+	<form action="#" th:action="@{/calculatrice}" th:object="${calculForm}"
+		method="post">
+		<label for="nombre1">Nombre 1:</label> <input type="text" id="nombre1"
+			name="nombre1" th:field="*{nombre1}" required> <label
+			for="nombre2">Nombre 2:</label> <input type="text" id="nombre2"
+			name="nombre2" th:field="*{nombre2}" required>
+
+		<button type="submit">Calculer</button>
+	</form>
+
+	<!-- Résultats des calculs -->
+	<h2>Résultats des Calculs</h2>
+	<p th:if="${somme != null}">
+		Somme : <span th:text="${somme}"></span>
+	</p>
+	<p th:if="${produit != null}">
+		Produit : <span th:text="${produit}"></span>
+	</p>
+	<p th:if="${soustraction != null}">
+		Soustraction : <span th:text="${soustraction}"></span>
+	</p>
+	<p th:if="${divisionParZeroMessage != null}">
+		Division : <span style="color: red;"
+			th:text="${divisionParZeroMessage}"></span>
+	</p>
+	<p th:if="${division != null}">
+		Division : <span th:text="${division}"></span>
+	</p>
+
+
+</body>
+</html>
